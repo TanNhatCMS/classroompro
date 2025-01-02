@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constrainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="Lớp 11B 2021-2022"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:subtitleTextColor="@android:color/background_light"
+        app:titleTextColor="@android:color/background_light" />
+ <Button
+     android:id="@+id/button_tkb"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="@string/thoikhoabieu"
+     android:backgroundTint="#d50000"
+     app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+/>
+ <Button 
+     android:id="@+id/button_sgk"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="@string/book"
+     android:backgroundTint="#9c27b0"
+     app:layout_constraintTop_toBottomOf="@+id/button_tkb"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+/>
+ <Button
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="@string/contact"
+     android:backgroundTint="#311b92"
+     app:layout_constraintTop_toBottomOf="@+id/button_sgk"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     android:id="@+id/button_contact"
+/> 
+<Button
+     android:id="@+id/button_info"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="@string/info_title"
+     android:backgroundTint="#00acc1"
+     app:layout_constraintTop_toBottomOf="@+id/button_contact"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+ 

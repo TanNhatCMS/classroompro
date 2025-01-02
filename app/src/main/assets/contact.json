@@ -1,0 +1,70 @@
+{
+  "contact": [
+  {
+    "Name": "Thầy Hồ Hồng Mộng",
+    "SubName": "Quản lý học sinh",
+	"Phone": "0932776573",
+	"Email": "",
+	"isZalo": true
+	
+  },
+  {
+    "Name": "Thầy Nguyễn Anh Tùng",
+    "SubName": "Giám Thị",
+	"Phone": "0982496850",
+	"Email": "",
+	"isZalo": true
+  },
+  {
+    "Name": "Thầy Đặng Trọng Nghĩa",
+    "SubName": "Hóa Học (GVCN)",
+	"Phone": "0906963421",
+	"Email": "dangtrongnghia1987@gmail.com",
+	"isZalo": true
+  },
+  
+  {
+    "Name": "Thầy Bùi Hùng",
+    "SubName": "Toán (BM)",
+	"Phone": "0911100031",
+	"Email": "",
+	"isZalo": true
+  },
+    {
+    "Name": "Thầy Bùi Hùng",
+    "SubName": "Toán (BM)",
+	"Phone": "0911100032",
+	"Email": "",
+	"isZalo": false
+  },
+    {
+    "Name": "Thầy Trần Hửu Tính",
+    "SubName": "GDCD (BM)",
+	"Phone": "0981187839",
+	"Email": "",
+	"isZalo": true
+  },
+  {
+    "Name": "Thầy Lê Đình Hùng",
+    "SubName": "Lịch Sử (BM)",
+	"Phone": "0934088446",
+	"Email": "",
+	"isZalo": true
+  },
+    {
+    "Name": "Cô Nguyễn Hoài Thương",
+    "SubName": "Địa Lý (BM)",
+	"Phone": "0965965380",
+	"Email": "thuongltdia1ak37@gmail.com",
+	"isZalo": true
+  }, 
+  {
+    "Name": "Cô Nguyễn Anh Thư",
+    "SubName": "Tiếng Anh (BM)",
+	"Phone": "0902002545",
+	"Email": "",
+	"isZalo": true
+  }
+],
+  "version": 1
+}

@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+   >
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
+    <uses-permission
+        android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission
+        android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission
+        android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission
+        android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission
+        android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <queries>
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService" />
+        </intent>
+    </queries>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <queries>
+        <intent>
+            <action android:name="android.speech.action.RECOGNIZE_SPEECH" />
+        </intent>
+    </queries>
+
+
+
+    <application
+        android:name=".quizizz.MyApplication"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Classroom"
+        android:allowBackup="true">
+        <!-- [START fcm_default_icon] -->
+        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
+             See README(https://goo.gl/l4GJaQ) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_stat_ic_notification" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+        <!-- [END fcm_default_icon] -->
+        <!-- [START fcm_default_channel] -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+        <!-- [END fcm_default_channel] -->
+        <activity
+            android:name=".view.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Classroom.NoActionBar" >
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".update.AutoUpdateApkActivity" />
+        <activity
+            android:name=".view.SplashScreen"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Classroom.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.PDFViewActivity"
+            android:label="@string/title_activity_pdfview"
+            android:theme="@style/Theme.Classroom.NoActionBar"
+            />
+        <activity
+            android:name=".ui.WebviewActivity"
+            android:label="@string/title_activity_webview"
+            android:parentActivityName=".view.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.MainActivity" />
+        </activity>
+        <receiver android:name=".webview.ActionBroadcastReceiver" />
+        <!-- Provider to cache images to the internal App cache -->
+        <!-- [START firebase_service] -->
+        <service
+            android:name=".firebase.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- [END firebase_service] -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:grantUriPermissions="true"
+            android:exported="false"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+
+        <activity
+            android:name="cms.tannhat.classroompro.quizizz.ui.QuizizzActivity"
+            android:label="@string/app_quizizz"
+            android:theme="@style/Theme.Classroom.NoActionBar"
+            android:launchMode="singleTask"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="quizizzgame"
+                    android:host="open" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="share.quizizz.com"
+                    android:pathPrefix="/me0t" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/join" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/join?gc=.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/join/pro?gc=.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/join?c=.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/join/quiz/.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/join/pre-game/running/.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/join/search/.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/join/topic/.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/join/game/.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/join/activity/.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/join/settings/.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="joinmyquiz.com"
+                    android:pathPattern=".*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/admin/reports.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/admin/private.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/admin/classes.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/admin/profile.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/admin" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/admin/quiz.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/admin/presentation.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="quizizz"
+                    android:host="auth" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true">
+                <data
+                    android:scheme="https"
+                    android:host="quizizz.com"
+                    android:pathPattern="/auth/.*" />
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="cms.tannhat.classroompro.shub.ui.ShubActivity"
+            android:label="Shub Classroom"
+            android:theme="@style/Theme.Classroom.NoActionBar"
+            android:launchMode="singleTask"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cms.tannhat.classroompro.timetable.StartActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:theme="@style/Theme.Classroom.NoActionBar"
+            android:label="@string/thoikhoabieu"
+            android:name="cms.tannhat.classroompro.timetable.TimeTableActivity" />
+        <activity
+            android:theme="@style/Theme.Classroom"
+            android:name="cms.tannhat.classroompro.timetable.AddTimeMini"
+            android:parentActivityName="cms.tannhat.classroompro.timetable.TimeTableActivity" />
+        <activity
+            android:theme="@style/Theme.Classroom"
+            android:name="cms.tannhat.classroompro.timetable.UpdateActivity" />
+    </application>
+
+</manifest>

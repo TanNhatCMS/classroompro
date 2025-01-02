@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutHome"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    tools:context=".ui.home.HomeFragment"
+    >
+    <Button
+        android:id="@+id/button_quizizz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#d50000"
+        android:text="@string/app_quizizz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+         />
+    <Button
+        android:id="@+id/button_shub"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Shub Classroom"
+        android:backgroundTint="#00acc1"
+        app:layout_constraintTop_toBottomOf="@+id/button_quizizz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <Button
+        android:id="@+id/button_tkb"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/tkb"
+        android:backgroundTint="#00acc1"
+        app:layout_constraintTop_toBottomOf="@+id/button_shub"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <Button
+        android:id="@+id/button_web"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Website Trung Tâm"
+        android:backgroundTint="#00acc1"
+        app:layout_constraintTop_toBottomOf="@+id/button_tkb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

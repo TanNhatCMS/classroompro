@@ -1,0 +1,110 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'com.google.gms.google-services'
+}
+apply plugin: 'com.google.gms.google-services'
+android {
+
+
+    compileSdk 33
+    namespace 'cms.tannhat.classroompro'
+    defaultConfig {
+        applicationId "cms.tannhat.classroompro"
+        minSdk 26
+        targetSdk 33
+        versionCode 54
+        versionName "2.4"
+     //   testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        minSdkVersion 26
+        targetSdkVersion 33
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        android.applicationVariants.all { variant ->
+            variant.outputs.all {
+                outputFileName = "Class Room v${variant.versionName}-${variant.versionCode}.apk"
+            }
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            ndk {
+                abiFilters = []
+                abiFilters.addAll(ABI_FILTERS.split(';').collect{it as String})
+            }
+            signingConfig signingConfigs.debug
+        }
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        buildConfig = true
+        viewBinding true
+    }
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation platform('com.google.firebase:firebase-bom:28.4.0')
+    implementation 'com.google.firebase:firebase-storage:20.1.0'
+    implementation 'com.google.firebase:firebase-config'
+    implementation 'com.google.firebase:firebase-analytics'
+    // Firebase Cloud Messaging (Java)
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.firebaseui:firebase-ui-database:8.0.0'
+    // Firebase Realtime Database (Java)
+    implementation 'com.google.firebase:firebase-database'
+    // Firebase Authentication (Java)
+    implementation 'com.google.firebase:firebase-auth'
+    // Needed to fix a dependency conflict with FirebaseUI'
+    implementation 'androidx.arch.core:core-runtime:2.1.0'
+    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.4.0'
+    //implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
+	implementation project(':android-pdf-viewer')
+	implementation 'androidx.browser:browser:1.4.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'androidx.annotation:annotation:1.5.0'
+    implementation 'androidx.vectordrawable:vectordrawable-animated:1.1.0'
+    implementation 'androidx.work:work-runtime:2.7.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'com.google.code.gson:gson:2.10'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.4.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+
+    implementation 'androidx.browser:browser:1.4.0'
+    testImplementation 'junit:junit:4.13.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    implementation "androidx.webkit:webkit:1.5.0"
+    // volley http library
+    implementation 'com.android.volley:volley:1.2.1'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+
+ //   implementation 'com.github.bumptech.glide:glide:4.12.0'
+  //  annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+}

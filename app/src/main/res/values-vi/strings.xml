@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="open_quizizz">Mở  Quizizz</string>
+    <string name="nh_p_m_tr_ch_i">Nhập mã</string>
+    <string name="filter_hint">Nhập từ khoá tìm</string>
+    <string name="action_filter">Lọc...</string>
+    <string name="quizizz">Quizizz</string>
+    <string name="search">search</string>
+    <string name="copy">copy</string>
+</resources>
