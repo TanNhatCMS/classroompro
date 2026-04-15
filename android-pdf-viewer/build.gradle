@@ -54,7 +54,7 @@ dependencies {
     api 'com.github.barteksc:pdfium-android:1.9.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.annotation:annotation:1.5.0'
+    implementation 'androidx.annotation:annotation:1.10.0'
     implementation 'androidx.core:core:1.9.0'
 }
 
